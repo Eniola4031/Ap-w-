@@ -22,3 +22,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/deposit', 'DepositController@index')->name('deposit');
 
+Route::get('/transfer', 'TransferController@index')->name('transfer');
+
+

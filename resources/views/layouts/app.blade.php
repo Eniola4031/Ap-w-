@@ -34,8 +34,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                     <a class="nav-item nav-link active" href="/profile">Profile</a>
-                        <a class="nav-item nav-link" href="{{route('./deposit')}}">Deposit funds</a>
-                        <a class="nav-item nav-link" href="/transfer">Gift funds</a>
+                        <a class="nav-item nav-link" href="{{ route ('deposit') }}">Deposit funds</a>
+                        <a class="nav-item nav-link" href="{{ route ('transfer') }}">Gift funds</a>
 
                     </ul>
 

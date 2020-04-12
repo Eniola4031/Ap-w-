@@ -3,12 +3,13 @@
 <form  method="get" action="">
 @csrf
 <div class="form-group row">
-<label for="transactAmt" class="col-md-4 col-form-label text-md-right">Transaction Amount</label>
+<label for="transactAmt" class="col-md-4 col-form-label text-md-right">Enter Transaction Amount</label>
 <input type="text" name="transactAmt">
 <input type="submit">
-</div>
-<script src="https://js.paystack.co/v1/inline.js"></script>
-  <button type="button" onclick="payWithPaystack()"> Pay </button> 
+<br>
+<label for="transactAmt" class="col-md-4 col-form-label text-md-right">Click here to make payments</label>
+  <button type="button" onclick="payWithPaystack()"> Pay </button>
+  </div> 
 </form>
 @endsection 
 <script>
@@ -41,4 +42,5 @@
     handler.openIframe();
   }
 </script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
 
