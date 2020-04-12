@@ -24,6 +24,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 //route for deposit of funds into wallet
 Route::get('/deposit', 'DepositController@index')->name('deposit');
 Route::post('deposit', 'DepositController@store');
+Route::post('deposit', 'DepositController@create');
+
 
 
 //route for transfer of virtual funds

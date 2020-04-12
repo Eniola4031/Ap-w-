@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section ("content")
-<form  method="get" action="">
+<form  method="get" action="/TransferController@store">
 @csrf
 <div class="form-group row">
 <label for="transactAmt" class="col-md-4 col-form-label text-md-right">Enter Transfer Amount</label>

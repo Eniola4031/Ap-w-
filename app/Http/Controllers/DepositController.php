@@ -24,7 +24,7 @@ class DepositController extends Controller
      */
     public function create()
     {
-        //
+        return view ('funds.deposit');
     }
 
     /**
@@ -35,10 +35,14 @@ class DepositController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validateWithBag('deposit', [
-            'amount' => 'required|max:255',
+        // $validatedData = $request->validate('deposit', [
+        //     'amount' => 'required',
+        // ]);
+        Deposit::create([
+            'amount' => $request->input('amount')
+
         ]);
-    
+
     }
 
     /**

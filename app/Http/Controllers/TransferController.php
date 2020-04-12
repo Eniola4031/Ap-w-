@@ -24,7 +24,7 @@ class TransferController extends Controller
      */
     public function create()
     {
-        //
+        return view('funds.transfer');
     }
 
     /**
@@ -35,7 +35,12 @@ class TransferController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Transfer::create([
+            'amount' => $request->input('amount')
+
+        ]);
+
+
     }
 
     /**
