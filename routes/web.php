@@ -20,8 +20,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/deposit', 'DepositController@index')->name('deposit');
 
+//route for deposit of funds into wallet
+Route::get('/deposit', 'DepositController@index')->name('deposit');
+Route::post('deposit', 'DepositController@store');
+
+
+//route for transfer of virtual funds
 Route::get('/transfer', 'TransferController@index')->name('transfer');
 
 
