@@ -15,6 +15,7 @@ class CreateDepositsTable extends Migration
     {
         Schema::create('deposits', function (Blueprint $table) {
             $table->id();
+            $table->decimal('amount');
             $table->timestamps();
         });
     }
