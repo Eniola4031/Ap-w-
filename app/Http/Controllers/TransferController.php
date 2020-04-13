@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Transfer;
 use Illuminate\Http\Request;
-
+use App\User;
 class TransferController extends Controller
 {
     /**
@@ -14,7 +14,9 @@ class TransferController extends Controller
      */
     public function index()
     {
-        return view ('funds.transfer');
+    $users = User::where('id', '!=', auth()->id())->get();
+
+    return view('funds.transfer')->with([ 'users' => $users ]);
     }
 
     /**
@@ -35,14 +37,14 @@ class TransferController extends Controller
      */
     public function store(Request $request)
     {
-$this->validate($request,[
-    'amount' => 'required'
-]);
-$transfer= new Transfer();
-$transfer->amount=$request->post('amount');
-$transfer->save();
+        $this->validate($request,[
+            'amount' => 'required'
+        ]);
+        $transfer= new Transfer();
+        $transfer->amount=$request->post('amount');
+        $transfer->save();
 
-return redirect('home')->with('success','Request accepted, kindy make transfer');
+        return redirect('home')->with('success','Request accepted, kindy make transfer');
 
 
     }

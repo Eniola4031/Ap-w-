@@ -7,5 +7,13 @@
 <input type="number" name="amount" value="amount">
 <input type="submit"><br>
   </div> 
-</form>
+  <div>
+  <h6>Other users<h6>
+  <select name="user_id" > 
+       @foreach($users as $user)
+           <option value="{{ $user->id }}" > {{ $user->name }} </option> 
+      @endforeach
+</select>
+  </div>
+  </form>
 @endsection 

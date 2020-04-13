@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::view('/','welcome');
 
 Auth::routes();
 
@@ -32,5 +33,7 @@ Route::post('/deposit/store', 'DepositController@store')->name('deposit.store');
 Route::get('/transfer', 'TransferController@index')->name('transfer');
 Route::post('/transfer/store', 'TransferController@store')->name('transfer.store');
 
+//route for paystack
+Route::post('/paystack', 'DepositController@redirect_to_paystack')->name('funds.paystack');
 
 

@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //$success = Session::get('success') ?? null;
+        //die($success);
         return view('home');
     }
 }

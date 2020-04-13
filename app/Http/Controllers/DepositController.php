@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Deposit;
+use App\Wallet;
+
 use Illuminate\Http\Request;
 
 class DepositController extends Controller
@@ -38,11 +40,30 @@ class DepositController extends Controller
         $this->validate($request,[
             'amount' => 'required'
         ]);
-        $deposit= new Deposit();
-        $deposit->amount=$request->post('amount');
-        $deposit->save();
+        // $deposit= new Deposit();
+        // $deposit->amount=$request->post('amount');
+        // $deposit->save();
+            $amount = $request->amount;
 
-        return redirect('home')->with('success','Request accepted, kindy make payments');
+            try {
+                $wallet = Wallet::where('users_id', Auth()->user()->id)->firstOrFail();
+                        } catch (\Exception $e) {
+                $error = $e->getMessage();
+                        }
+        
+        
+        if(isset($error)){
+            $wallet = new Wallet;
+
+            $wallet->current_balance = $amount;
+            $wallet->users_id = Auth()->user()->id;
+            $wallet->save();
+        }else{
+            $wallet->current_balance += $amount;
+            $wallet->save();
+        }
+
+        return redirect('home')->with('success','Deposit successful, balance increased');
 
     }
 
@@ -52,6 +73,16 @@ class DepositController extends Controller
      * @param  \App\Deposit  $deposit
      * @return \Illuminate\Http\Response
      */
+
+     public function redirect_to_paystack(Request $request){
+        $this->validate($request, [
+            'amount' => 'required'
+        ]);
+        //    die ('here');
+        return view('funds.paystack')->with('amount', $request->amount);
+    
+     }
+
     public function show(Deposit $deposit)
     {
         //

@@ -1,4 +1,4 @@
-<script>
+
   function payWithPaystack(){
     let handler = PaystackPop.setup({
       key: 'pk_test_58aa36ad1e9aaea6bf1b169f6256c5d9a40767d6',
@@ -27,4 +27,4 @@
     });
     handler.openIframe();
   }
-</script>
+
