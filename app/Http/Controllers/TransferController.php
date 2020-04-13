@@ -35,10 +35,14 @@ class TransferController extends Controller
      */
     public function store(Request $request)
     {
-        Transfer::create([
-            'amount' => $request->input('amount')
+$this->validate($request,[
+    'amount' => 'required'
+]);
+$transfer= new Transfer();
+$transfer->amount=$request->post('amount');
+$transfer->save();
 
-        ]);
+return redirect('home')->with('success','Request accepted, kindy make transfer');
 
 
     }

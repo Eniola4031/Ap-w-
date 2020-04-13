@@ -35,13 +35,14 @@ class DepositController extends Controller
      */
     public function store(Request $request)
     {
-        // $validatedData = $request->validate('deposit', [
-        //     'amount' => 'required',
-        // ]);
-        Deposit::create([
-            'amount' => $request->input('amount')
-
+        $this->validate($request,[
+            'amount' => 'required'
         ]);
+        $deposit= new Deposit();
+        $deposit->amount=$request->post('amount');
+        $deposit->save();
+
+        return redirect('home')->with('success','Request accepted, kindy make payments');
 
     }
 

@@ -15,6 +15,7 @@ class CreateTransfersTable extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->id();
+            $table->decimal('amount',9,3);
             $table->timestamps();
         });
     }

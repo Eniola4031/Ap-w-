@@ -23,12 +23,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //route for deposit of funds into wallet
 Route::get('/deposit', 'DepositController@index')->name('deposit');
-Route::post('deposit', 'DepositController@store');
-Route::post('deposit', 'DepositController@create');
+Route::post('/deposit/store', 'DepositController@store')->name('deposit.store');
+//Route::get('/deposit/create', 'DepositController@create')->name('deposit.create');
 
 
 
 //route for transfer of virtual funds
 Route::get('/transfer', 'TransferController@index')->name('transfer');
+Route::post('/transfer/store', 'TransferController@store')->name('transfer.store');
+
 
 

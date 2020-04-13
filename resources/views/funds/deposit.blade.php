@@ -1,13 +1,23 @@
 @extends('layouts.app')
 @section ("content")
+<script src="https://js.paystack.co/v1/inline.js"></script>
 
-{!! Form::open(['action' => 'DepositController@store', 'method' => 'post']) !!}
+<form  method="post" action="/deposit/store">
+@csrf
 <div class="form-group row">
-{{Form::label('amount','Amount')}}
-{{ Form::text('amount',['class' => 'form-control', 'placeholder' => 'Enter Amount']) }}
-</div>
-{{!! Form::close() !!}}
-
+<label for="transactAmt" class="col-md-4 col-form-label text-md-right">Enter Deposit Amount</label>
+<input type="number" name="amount" value="amount">
+<input type="submit">
+<button type="button" onclick="payWithPaystack()"> Pay </button> 
+  </div> 
+</form>
+<div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                </div>
 
 @endsection 
 
