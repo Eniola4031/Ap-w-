@@ -23,15 +23,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //route for deposit of funds into wallet
-Route::get('/deposit', 'DepositController@index')->name('deposit');
-Route::post('/deposit/store', 'DepositController@store')->name('deposit.store');
-//Route::get('/deposit/create', 'DepositController@create')->name('deposit.create');
+Route::get('/deposit', 'DepositController@index')->name('deposit')->middleware(['auth']);
+Route::post('/deposit/store', 'DepositController@store')->name('deposit.store')->middleware(['auth']);
 
 
 
 //route for transfer of virtual funds
-Route::get('/transfer', 'TransferController@index')->name('transfer');
-Route::post('/transfer/store', 'TransferController@store')->name('transfer.store');
+Route::get('/transfer', 'TransferController@index')->name('transfer')->middleware(['auth']);
+Route::post('/transfer/store', 'TransferController@store')->name('transfer.store')->middleware(['auth']);
 
 //route for paystack
 Route::post('/paystack', 'DepositController@redirect_to_paystack')->name('funds.paystack');
