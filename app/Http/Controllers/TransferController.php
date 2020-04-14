@@ -71,8 +71,6 @@ class TransferController extends Controller
         }
 
         
-        return redirect('home')->with('success','Request accepted, kindy make transfer');
-
 
     }
 
